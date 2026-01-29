@@ -77,6 +77,8 @@ xcode-select --install
 
 To guard against potential issues, we will do this in a few batches. To do so, copy and paste each chunk of code into your `R` console one at a time and press `Enter`.
 
+&nbsp; 
+
 *Batch A:*
 ```{r , include=TRUE, eval=FALSE}
 pkg_batch_A <- c('ggplot2', 'dplyr', 'tidyr', 'readr',
@@ -137,7 +139,7 @@ tinytex::install_tinytex()
 
 &nbsp; 
 
-**Step 8:** Make a folder on your computer called `"repos"`. I recommend putting it inside your `Users` folder, on the same level as `"Documents"`. 
+**Step 8:** Make a folder on your computer called `"repos"`. I recommend putting it inside your username in the `Users` folder, on the same level as `"Documents"`. 
 
 &nbsp; 
 
@@ -267,13 +269,19 @@ Ditto, with the password thing.
 
 **Step 13:** Now go back to your Github account at [www.github.com](www.github.com).  Click on the "Repositories" tab. 
 
+![](../img/github_repos.png)
+
 &nbsp; 
 
 **Step 14:** Click on "New"...
 
+![](../img/github_new.png)
+
 &nbsp; 
 
 **Step 15:** Then fill out the information for your new repository. 
+
+![](../img/github_new_options.png)
 
 - **Repository name:** keep it simple, short, and don't use spaces. My suggestion: "test_repo".  
 
@@ -288,42 +296,66 @@ Ditto, with the password thing.
 
 **Step 16:** Click on the green "Code" button ... 
 
+![](../img/github_code.png)
+
 &nbsp; 
 
 **Step 17:** Copy the URL to your repo by clicking on the double-paper icon:  
+![](../img/github_clone.png)
+
 &nbsp; 
 
 **Step 18:** Now go back to your Terminal. Remember that you are in your "`repos`" folder. You are now going to "clone" your new repository onto your local machine.  That means making a local version of your repo, where you can make changes then push those changes back onto the version existing online on your `Github` account. It's gonna be sweet! But we will get to all that stuff later. For now, let's clone your repo.  
 
-In Terminal, type the following:  
+In Terminal, type the following...  
 
 ```{r , include=TRUE, eval=FALSE}
 git clone <paste the thing you copied from Github here>
 ```
 
-(you don't need to use the "<" or ">" symbols).  
+... and press `Enter`.   (You don't need to use the "<" or ">" symbols.)    
 
 &nbsp; 
 
-**Step 18:** Now look in your "repos" folder. You should see a folder with the same name as your repo. If so, BOOM.  
+**Step 19:** Now look in your "repos" folder. You should see a folder with the same name as your repo. If so, BOOM.  
+
+&nbsp; 
 
 
 ## Test `RMarkdown` 
 
 &nbsp; 
 
-**Step 18:** Back in `RStudio`, make a new `RMarkdown` file. To do so, click on the green plus sign at the top-left of your window, and in the drop-down menu click on the "R Markdown ..." option.  
+**Step 20:** Back in `RStudio`, make a new `RMarkdown` file. To do so, click on the green plus sign at the top-left of your window, and in the drop-down menu click on the "R Markdown ..." option.  
+
+![](../img/rmd_select.png)
+
+&nbsp; 
 
 
-**Step 19:** Give your new `R Markdown` file a name -- whatever you want. Provide your own name as the author.   
+**Step 21:** Give your new `R Markdown` file a name -- whatever you want. Provide your own name as the author.   
+
+![](../img/rmd_new.png)
+
+&nbsp; 
 
 
-**Step 20:** Once you click "OK", you should see something like this, which has some demo text and code included for you to see how `Rmd` works.  
+**Step 22:** Once you click "OK", you should see something like this, which has some demo text and code included for you to see how `Rmd` works.  
 
+![](../img/rmd_open.png)
 
-**Step 21:** Click on the "Knit" button on the top pane. If a drop-down button appears, choose "Knit to HTML".     
+&nbsp;  
+
+**Step 23:** Click on the "Knit" button on the top pane. If a drop-down button appears, choose "Knit to HTML".     
+
+![](../img/rmd_knit.png)
+&nbsp; 
 
 
 If this worked, you should see a new window appear with a fancy version of the text you see in your `RStudio` window.  If that happened, then you are GOOD TO GO!!!  
+
+
+![](../img/rmd_knit_render.png)
+
 
 &nbsp; 
