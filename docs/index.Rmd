@@ -1,0 +1,329 @@
+---
+title: "ESCI 222 setup"
+author: "Eric Ezell"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    theme: flatly
+    toc: yes
+    toc_float:
+      collapsed: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+&nbsp; 
+
+*Make sure you are connected to the internet!* 
+
+&nbsp; 
+
+## Setup `R` & `R Studio`
+
+&nbsp; 
+
+**Step 1:** [Install `R`](https://mirrors.nics.utk.edu/cran/).
+
+&nbsp; 
+
+**Step 2:** [Install `R Studio`](https://posit.co/download/rstudio-desktop/) (*go straight to step 2 on that link*). 
+
+&nbsp; 
+
+**Step 3:** Open `R Studio` and make sure everything works: in the Console (the big mostly-blank pane on the left side of the `R Studio` window), type `2 + 2` then hit `Enter`. `R` should reply that the answer is `4`. If so, you've got `R` and `R Studio` running on your machine!
+
+&nbsp; 
+
+## Install `Rtools` / `X Code`
+
+&nbsp; 
+
+**Step 4**: You need some background software in order to install certain `R` packages.  
+
+&nbsp; 
+
+**Windows:** Download [`Rtools` here](http://cran.r-project.org/bin/windows/Rtools/) and run the installer. 
+
+-- or -- 
+
+**Mac:** First, check in `R` first to see if you already have the background software you need by running these lines of code:
+
+```{r , include=TRUE, eval=FALSE}
+if( !require('devtools') ){ install.packages('devtools') }
+devtools::has_devel()
+```
+
+If you don't have it, open the *Terminal* app on your *Mac*. Open the Mac Search (`Command` + `spacebar`), and search `“Terminal”`. Press `Enter`. A Terminal “shell” window will appear.  
+
+Copy-paste the following and hit `Enter`:  
+
+```{r, class.source="bg-dark", class.output="bg-dark", eval=FALSE}
+xcode-select --install
+```
+
+&nbsp; 
+
+**Step 5:** Close `RStudio` then re-open it, to ensure these background utilities are activated.  
+
+&nbsp; 
+
+## Install key packages
+
+&nbsp; 
+
+**Step 6:** Install a bunch of `R` packages.   
+
+To guard against potential issues, we will do this in a few batches. To do so, copy and paste each chunk of code into your `R` console one at a time and press `Enter`.
+
+*Batch A:*
+```{r , include=TRUE, eval=FALSE}
+pkg_batch_A <- c('ggplot2', 'dplyr', 'tidyr', 'readr',
+                 'rstudioapi', 'gapminder', 'plotly')
+
+for(pkg_i in pkg_batch_A){
+  message('\nInstalling ', pkg_i, '...')
+  if( !require(pkg_i, character.only = TRUE) ){ install.packages(pkg_i) }
+  Sys.sleep(1)
+  message('Test-loading ', pkg_i, '...')
+  library(pkg_i, character.only=TRUE)
+}
+```
+
+&nbsp; 
+
+*Batch B:*
+```{r , include=TRUE, eval=FALSE}
+pkg_batch_B <- c('broom', 'ggpubr', 'knitr', 'rmarkdown',
+                 'kable', 'kableExtra', 'tinytex')
+
+for(pkg_i in pkg_batch_B){
+  message('\nInstalling ', pkg_i, '...')
+  if( !require(pkg_i, character.only = TRUE) ){ install.packages(pkg_i) }
+  Sys.sleep(1)
+  message('Test-loading ', pkg_i, '...')
+  library(pkg_i, character.only=TRUE)
+}
+```
+
+&nbsp; 
+
+*Batch C:*
+```{r , include=TRUE, eval=FALSE}
+pkg_batch_C <- c('leaflet', 'shiny', 'shinydashboard')
+
+for(pkg_i in pkg_batch_C){
+  message('\nInstalling ', pkg_i, '...')
+  if( !require(pkg_i, character.only = TRUE) ){ install.packages(pkg_i) }
+  Sys.sleep(1)
+  message('Test-loading ', pkg_i, '...')
+  library(pkg_i, character.only=TRUE)
+}
+```
+
+&nbsp; 
+
+**Step 7:** Install `tinytex` utilities, which you will need to print PDFs from `R` someday.
+
+```{r , include=TRUE, eval=FALSE}
+tinytex::install_tinytex()
+```
+
+&nbsp; 
+
+
+## Setup a "repos" folder 
+
+&nbsp; 
+
+**Step 8:** Make a folder on your computer called `"repos"`. I recommend putting it inside your `Users` folder, on the same level as `"Documents"`. 
+
+&nbsp; 
+
+**Step 9:** Now go back to your *Terminal* and navigate to the `"repos"` folder you just created.  In order to do so, you will need these three commands. Take a few moments to understand these commands carefully.  
+
+&nbsp; 
+
+**`pwd`**
+
+This stands for “path to working directory”. Type it, press Enter, and see what happens.  
+
+If everything went to plan, you’ll see a path (ie, a location within your computer’s file structure). “Working directory” means the folder you are “in” right now – just like in R.  
+
+When you typed `pwd` you were asking your computer which directory (folder) you’re in. It responded. Great! Now let’s see what else is in the folder where you are.  
+
+&nbsp; 
+
+**`ls`** 
+
+Type `ls`. This stands for "list" as in "list all the files in this directory." `ls` is commonly used to quickly see contents of a folder.
+
+&nbsp; 
+
+Okay -- you now know how to (a) see where you are and (b) see what else is there.  
+
+*But what about navigation?* Let’s say you want to “move around” (ie, go to other folders). You do this using the cd command, which stands for “change directory”.  
+
+**`cd`** 
+
+Navigating into folders: After typing `cd`, you should type a space and then the name of the directory you want to navigate to. This directory can be either (a) relative or (b) full. “Relative” means relative to where you are. So, for example, if you are currently in the following folder:
+
+```{r , include=TRUE, eval=FALSE}
+/home/abc/folder_1
+```
+
+And within that folder you have the following sub-folders:
+
+```{r , include=TRUE, eval=FALSE}
+folder_a
+folder_b
+folder_c
+```
+
+You could navigate to one of them by typing the full path:
+
+```{r , include=TRUE, eval=FALSE}
+cd /home/abc/folder_1/folder_a
+```
+
+Or by typing the relative path:
+
+```{r , include=TRUE, eval=FALSE}
+cd folder_a
+```
+
+Both of the last two commands have the same result: changing your working directory to `/home/abc/folder_1/folder_a`. You can confirm that using pwd.
+
+*Navigating out of folders:* What about if you want to navigate “up” to the `/home/abc folder`. Again, you can do this using relative or full paths. To navigate there with the full path, simply type:
+
+```{r , include=TRUE, eval=FALSE}
+cd /home/abc
+```
+
+To go “up” one level using a relative path, use `..`. So:
+
+```{r , include=TRUE, eval=FALSE}
+cd ..
+```
+
+So far so good. Now you can (a) see where you are with pwd, (b) list folder contents with ls and (c) navigate with cd. Those 3 command will cover 80% of what you’ll need to do to use git from the command line.  
+
+**Now use those tools to navigate to your `"repos`" folder.**  
+
+&nbsp; 
+
+
+## Setup `git` and `Github`
+
+&nbsp; 
+
+**Step 10:** Setup a [Github Free account](https://docs.github.com/en/enterprise-cloud@latest/get-started/onboarding/getting-started-with-your-github-account) and make sure to keep track of your username and password. 
+
+&nbsp; 
+
+**Step 11:** Setup `git` on your machine.  To do so, first open your *Terminal*. If you use *Windows*, go to the search box in the *Start Menu*. Type "`cmd`" and hit `Enter`. A Terminal “shell” window will appear.  If you use *Mac*, open the Mac Search (`Command` + `spacebar`) and search `“Terminal”`. Press `Enter`. A Terminal “shell” window will appear.  
+
+Type the following line: 
+
+```{r , include=TRUE, eval=FALSE}
+git --version
+```
+
+If `git` is already installed, you should see a response like this:  
+
+```{r , include=TRUE, eval=FALSE}
+git version 2.39.2 (Apple Git-143)
+```
+
+If it isn't, you may be directed on how to install it. If you're not, go [here](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and follow instructions.  ([Here](https://datascience.pizza/git-github.html#windows) is some more guidance for Windows; [here](https://datascience.pizza/git-github.html#windows) is some more guidance for Mac.). 
+
+After you complete installation, repeat the `git --version` check above and confirm that it is loaded.  
+
+&nbsp; 
+
+**Step 12:** Configure `git` on your computer to be associated with the account you setup with `Github` online. Back in the Terminal, type the following, using the quotes:  
+
+```{r , include=TRUE, eval=FALSE}
+git config --global user.name "your username here"
+```
+
+If you are prompted to enter your `Github` password, do so carefully.    
+
+Then this (replace `<email>` with your email -- don't need to use the "<" or ">" symbols, or quotes):   
+
+```{r , include=TRUE, eval=FALSE}
+git config --global user.email <email>
+```
+
+Ditto, with the password thing.  
+
+&nbsp; 
+
+
+## Create your first repo 
+
+&nbsp; 
+
+**Step 13:** Now go back to your Github account at [www.github.com](www.github.com).  Click on the "Repositories" tab. 
+
+&nbsp; 
+
+**Step 14:** Click on "New"...
+
+&nbsp; 
+
+**Step 15:** Then fill out the information for your new repository. 
+
+- **Repository name:** keep it simple, short, and don't use spaces. My suggestion: "test_repo".  
+
+- **Description**: also keep it simple for now: "My first repo!"
+
+- **Configuration**: Make visibility "Public", and turn "Add README" ON. Keep everything else as is.  
+
+- Click the green **"Create repository"** button.  You should then see the homepage for your new repo! Something like this:  
+
+
+&nbsp; 
+
+**Step 16:** Click on the green "Code" button ... 
+
+&nbsp; 
+
+**Step 17:** Copy the URL to your repo by clicking on the double-paper icon:  
+&nbsp; 
+
+**Step 18:** Now go back to your Terminal. Remember that you are in your "`repos`" folder. You are now going to "clone" your new repository onto your local machine.  That means making a local version of your repo, where you can make changes then push those changes back onto the version existing online on your `Github` account. It's gonna be sweet! But we will get to all that stuff later. For now, let's clone your repo.  
+
+In Terminal, type the following:  
+
+```{r , include=TRUE, eval=FALSE}
+git clone <paste the thing you copied from Github here>
+```
+
+(you don't need to use the "<" or ">" symbols).  
+
+&nbsp; 
+
+**Step 18:** Now look in your "repos" folder. You should see a folder with the same name as your repo. If so, BOOM.  
+
+
+## Test `RMarkdown` 
+
+&nbsp; 
+
+**Step 18:** Back in `RStudio`, make a new `RMarkdown` file. To do so, click on the green plus sign at the top-left of your window, and in the drop-down menu click on the "R Markdown ..." option.  
+
+
+**Step 19:** Give your new `R Markdown` file a name -- whatever you want. Provide your own name as the author.   
+
+
+**Step 20:** Once you click "OK", you should see something like this, which has some demo text and code included for you to see how `Rmd` works.  
+
+
+**Step 21:** Click on the "Knit" button on the top pane. If a drop-down button appears, choose "Knit to HTML".     
+
+
+If this worked, you should see a new window appear with a fancy version of the text you see in your `RStudio` window.  If that happened, then you are GOOD TO GO!!!  
+
+&nbsp; 
