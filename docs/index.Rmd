@@ -98,7 +98,7 @@ for(pkg_i in pkg_batch_A){
 *Batch B:*
 ```{r , include=TRUE, eval=FALSE}
 pkg_batch_B <- c('broom', 'ggpubr', 'knitr', 'rmarkdown',
-                 'kable', 'kableExtra', 'tinytex')
+                 'kableExtra', 'tinytex')
 
 for(pkg_i in pkg_batch_B){
   message('\nInstalling ', pkg_i, '...')
