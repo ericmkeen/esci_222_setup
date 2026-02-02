@@ -355,6 +355,9 @@ git clone <paste the thing you copied from Github here>
 ![](../img/rmd_knit.png)
 &nbsp; 
 
+It will ask you to save the file first. Save it *inside* your `test_repo` folder. Call it `index.Rmd`.  
+
+&nbsp; 
 
 If this worked, you should see a new window appear with a fancy version of the text you see in your `RStudio` window.  If that happened, then you are GOOD TO GO!!!  
 
