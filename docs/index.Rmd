@@ -147,9 +147,10 @@ tinytex::install_tinytex()
 
 &nbsp; 
 
-**`pwd`**
+**`pwd`** 
 
 This stands for “path to working directory”. Type it, press Enter, and see what happens.  
+(If you are using Windows, try typing `cd` instead).
 
 If everything went to plan, you’ll see a path (ie, a location within your computer’s file structure). “Working directory” means the folder you are “in” right now – just like in R.  
 
@@ -157,9 +158,9 @@ When you typed `pwd` you were asking your computer which directory (folder) you�
 
 &nbsp; 
 
-**`ls`** 
+**`ls`** (Mac) / **`dir`** (Windows)
 
-Type `ls`. This stands for "list" as in "list all the files in this directory." `ls` is commonly used to quickly see contents of a folder.
+Type `ls`. This stands for "list" as in "list all the files in this directory." `ls` is commonly used to quickly see contents of a folder. (If you are on Windows, type "dir" instead -- for directory.)
 
 &nbsp; 
 
