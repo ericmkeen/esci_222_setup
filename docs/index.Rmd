@@ -294,6 +294,10 @@ Ditto, with the password thing.
 
 &nbsp; 
 
+## Clone your repo
+
+&nbsp; 
+
 **Step 16:** Click on the green "Code" button ... 
 
 ![](../img/github_code.png)
